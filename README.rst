@@ -55,6 +55,7 @@ Usage
 7. visualize the results as follows:
 
 ::
+ 
  dat.plot(focus=[<sample names of interest>])
 
 * a sample code for running OLSA described below:
