@@ -10,8 +10,8 @@ init
 from olsapy import *
 
 __copyright__    = 'Copyright (C) 2018 Tadahaya Mizuno'
-__version__      = '2.0.0'
-__license__      = 'BSD-3-Clause'
+__version__      = '2.0.1'
+__license__      = 'MIT'
 __author__       = 'Tadahaya Mizuno'
 __author_email__ = 'tadahaya@gmail.com'
 __url__          = ''
