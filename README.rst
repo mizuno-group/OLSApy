@@ -19,6 +19,8 @@ Setup
 
  pip install olsapy
 
+For conda, please use conda skeleton
+
 Usage
 =======================================================
 1. prepare a profile matrix with variables in rows and samples in columns as a csv file
