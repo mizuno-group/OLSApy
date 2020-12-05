@@ -9,7 +9,7 @@ from setuptools import setup,find_packages
 from setuptools.command.test import test as TestCommand
 import sys
 
-__version__ = "1.0.1" #major.minor[.patch[.sub]] 
+__version__ = "2.0.0" # major.minor[.patch[.sub]] 
 
 sys.path.append('.\\main')
 sys.path.append('.\\tests')
@@ -39,7 +39,7 @@ setup(
     version=__version__,
     description="a package for orthogonal linear separation analysis (OLSA)",
     long_description=readme,
-    url='https://github.com/tadahaya222/OLSApy',
+    url='https://github.com/mizuno-group/OLSApy',
     author='tadahaya mizuno',
     author_email='tadahaya@gmail.com',
     license=license_txt,

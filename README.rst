@@ -10,7 +10,7 @@ OLSAPY: Orthogonal Linear Separation Analysis in Python
 
 Dependency
 =======================================================
-* python 3.6
+* python >= 3.6
 * requirements: numpy, pandas, scipy
 
 Setup
@@ -26,58 +26,57 @@ Usage
 
 ::
 
- from olsapy import olsa as ol
+ from olsapy import olsa
    
-3. generate a DataClass object as follows:
+3. generate an OLSA object as follows:
 
 ::
 
- dat = ol.DataClass()
+ dat = olsa.OLSA()
 
-4. load the prepared data file into the generated object as follows:
-
-::
-
- dat.load(<a path for the data file>)
-
-5. run OLSA and obtain a Result object as follows:
+4. load the prepared dataframe (feature x sample matrix) into the generated object as follows:
 
 ::
 
- res = ol.olsa(dat)
+ dat.load_df(<prepared dataframe>)
 
-6. export each result as csv files as follows:
-
-::
-
- res.export()
-
-7. each result can be extracted as a dataframe if necessary as follows:
+5. run OLSA as follows:
 
 ::
 
- dataframe = res.rsm()
+ dat.olsa(dat)
+
+6. get the results as follows:
+
+::
+
+ rsm,rvm,ts,contribution = dat.get_res()
+
+7. visualize the results as follows:
+
+::
+ dat.plot(focus=[<sample names of interest>])
 
 * a sample code for running OLSA described below:
 
 ::
 
- from olsapy import olsa as ol
+ from olsapy import olsa
    
- filein = '<file path>'
+ df = <a dataframe of interest (feature x sample)>
 
- #run OLSA simply
- dat = ol.DataClass() #generate a DataClass object
- dat.load(filein) #load data
- res = ol.olsa(dat) #run OLSA and obtain a Result object
- res.export() #save data
+ ### calculation
+ dat = olsa.OLSA()
+ dat.load_df(df)
+ dat.olsa(accumulation=0.6) # accumulation determines the vectors subjected to varimax rotation
+ rsm,rvm,ts,contribution = dat.get_res()
+  
+ ### visualization
+ dat.plot(focus=[<sample names of interest>])
+ 
+ ### visualization of already prepared data
+ dat.plot(rsm,focus=[<sample names of interest>])
 
- #run OLSA with some options
- df = res.rsm() #.rsm(), etc. extract stored data in a Result object as a dataframe
- dat2 = ol.DataClass()
- dat2.load_df(df) #load dataframe into a DataClass object
- res2 = ol.olsa(dat2,accumulation=0.5) #accumulation determines the vectors subjected to varimax rotation
- res2.export(CM=True,TS=False) #results to be exported can be chosen.
 
 Licence
 =======================================================
